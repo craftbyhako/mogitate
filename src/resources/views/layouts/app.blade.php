@@ -14,7 +14,7 @@
   <div class="app">
     <header class="header">
       <h1 class="header__heading">mogitate</h1>
-      <!-- @yield('link')　★★要確認-->
+      @yield('link')
    
    
    
@@ -22,12 +22,12 @@
     <main>
 
     <div class="content">
-      <!-- @yield('content')　★★要確認 -->
+      @yield('content')
 
 
     </div>
     
-    
+
 
 
 

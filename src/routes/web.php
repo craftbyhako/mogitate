@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
 
 
 /*
@@ -15,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/register', [RegisterController::class,'create']);
+
+Route::post('/products', [ProductsController::class, 'store']);
 
