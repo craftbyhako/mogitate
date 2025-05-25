@@ -28,7 +28,8 @@ class RegisterRequest extends FormRequest
         'name' => 'required|string',
         'price' => 'required|numeric|between:0,10000',
         'image' => 'required|image|mimes:png,jpeg',
-        'season' => 'required',
+        'seasons' => 'required|array',
+        'seasons.*' => 'exists:seasons,id',
         'description' => 'required|max:120',
     
         ];

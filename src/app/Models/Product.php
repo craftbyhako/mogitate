@@ -15,4 +15,8 @@ class Product extends Model
         'season',
         'description'
     ];
+
+    public function seasons(){
+        return $this->belongsToMany(Season::class);
+    }
 }

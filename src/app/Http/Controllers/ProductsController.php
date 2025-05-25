@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Season;
 use App\Http\Requests\RegisterRequest;
 
 class ProductsController extends Controller
@@ -17,13 +18,17 @@ class ProductsController extends Controller
         $imagePath = null;
     }
 
-    Product::create([
+    $product = Product::create([
         'name' => $request->name,
         'price' => $request->price,
         'image' => $imagePath,
         'season' => $request->season,
         'description' => $request->description,
     ]);
+
+    if ($request->has('seasons')) {
+        $product->seasons()->attach($request->seasons);
+    }
 
     return redirect('/products');
     }
@@ -33,5 +38,11 @@ class ProductsController extends Controller
         $products = Product::all();
         return view('products', compact('products'));
     }
+
+    public function create()
+{
+    $seasons = Season::all();
+    return view('register', compact('seasons'));
+}
 }
 
