@@ -10,7 +10,7 @@
 <form action="/products" method="post" enctype="multipart/form-data">
     @csrf
     <h3>商品名<span>必須</span></h3>
-    <input type="text" name="product_name" placeholder="商品名を入力">
+    <input type="text" name="name" value="{{ old('name') }}" placeholder="商品名を入力">
     <div class="form__error">
     @error('name')
         {{ $message}}
@@ -18,7 +18,7 @@
     </div>
 
     <h3>値段<span>必須</span></h3>
-    <input type="text" name="price" placeholder="値段を入力">
+    <input type="text" name="price" value="{{ old('price') }}"placeholder="値段を入力">
     <div class="form__error">
     @error('price')
         {{ $message}}
@@ -34,10 +34,18 @@
     </div>
 
     <h3>季節<span>必須</span></h3>
-    <input type="radio" name="season" value="spring">春
-    <input type="radio" name="season" value="summer">夏
-    <input type="radio" name="season" value="autumn">秋
-    <input type="radio" name="season" value="winter">冬
+    <!-- 春 -->
+    <input type="radio" name="season" id="spring" value="1" {{ old('season')==1 || old('season')==null ? 'checked' : '' }}>
+        <span>春</span>
+    <!-- 夏 -->
+    <input type="radio" name="season" id="summer" value="2" {{ old('season')==2 || old('season')==null ? 'checked' : '' }}>
+    <span>夏</span>
+    <!-- 秋 -->
+    <input type="radio" name="season" id="autumn" value="3" {{ old('season')==3 || old('season')==null ? 'checked' : '' }}>
+    <span>秋</span>
+    <!-- 冬 -->
+    <input type="radio" name="season" id="winter" value="4" {{ old('season')==4 || old('season')==null ? 'checked' : '' }}>
+    <span>冬</span>
     <div class="form__error">
     @error('season')
         {{ $message}}
@@ -45,7 +53,7 @@
     </div>
 
     <h3>商品説明<span>必須</span></h3>
-    <textarea name="explanation" cols="40" rows="5" id=""></textarea>
+    <textarea name="explanation" cols="40" rows="5" id="" placeholder="商品の説明を入力">{{ old('explanation') }}</textarea>
     <div class="form__error">
     @error('explanation')
         {{ $message}}

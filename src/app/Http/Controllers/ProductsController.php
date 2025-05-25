@@ -10,12 +10,19 @@ class ProductsController extends Controller
 {
     public function store(RegisterRequest $request){
     
+
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('images', 'public');
+    }else{
+        $imagePath = null;
+    }
+
     Product::create([
         'name' => $request->name,
         'price' => $request->price,
         'image' => $imagePath,
         'season' => $request->season,
-        'explanation' => $request->explanation,
+        'description' => $request->description,
     ]);
 
     return redirect('/products');

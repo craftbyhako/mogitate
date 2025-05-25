@@ -13,6 +13,6 @@ class Product extends Model
         'price',
         'image',
         'season',
-        'explanation'
+        'description'
     ];
 }
