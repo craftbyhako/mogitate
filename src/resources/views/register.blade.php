@@ -26,7 +26,7 @@
     </div>
 
     <h3>商品画像<span>必須</span></h3>
-    <input type="file" name="image" required>ファイルを選択
+    <input type="file" name="image" required>
     <div class="form__error">
     @error('image')
         {{ $message}}
@@ -34,12 +34,14 @@
     </div>
 
     <h3>季節<span>必須</span></h3>
+
+
     @foreach ($seasons as $season)
 
-        <label for="">
-            <input type="checkbox" name="seasons[]" value="{{ $season->id }}" {{ is array(old('seasons')) && in_array($season->id, old('seasons')) ? 'checked' : '' }}>
+        <label>
+            <input type="checkbox" name="seasons[]" value="{{ $season->id }}" {{ is_array(old('seasons')) && in_array($season->id, old('seasons')) ? 'checked' : '' }}>
             {{ $season->season_name }}
-        </label><br>
+        </label>
     @endforeach
     <div class="form__error">
     @error('seasons')
@@ -66,14 +68,14 @@
     </div> -->
 
     <h3>商品説明<span>必須</span></h3>
-    <textarea name="explanation" cols="40" rows="5" id="" placeholder="商品の説明を入力">{{ old('explanation') }}</textarea>
+    <textarea name="description" cols="40" rows="5" id="" placeholder="商品の説明を入力">{{ old('description') }}</textarea>
     <div class="form__error">
-    @error('explanation')
+    @error('description')
         {{ $message}}
     @enderror
     </div>
 
     <a href="/products">戻る</a>
-    <a href="/products"><button type="submit">登録</button></a>
+    <button type="submit">登録</button>
 </form>
 @endsection

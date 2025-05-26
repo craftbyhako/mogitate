@@ -22,7 +22,6 @@ class ProductsController extends Controller
         'name' => $request->name,
         'price' => $request->price,
         'image' => $imagePath,
-        'season' => $request->season,
         'description' => $request->description,
     ]);
 
@@ -34,15 +33,21 @@ class ProductsController extends Controller
     }
 
 
-    public function index(){
-        $products = Product::all();
+    public function index()
+    {
+        $products = Product::with('seasons')->get();
         return view('products', compact('products'));
     }
 
     public function create()
-{
-    $seasons = Season::all();
-    return view('register', compact('seasons'));
-}
+    {
+        $seasons = Season::all();
+        return view('register', compact('seasons'));
+    }
+
+    public function show(Product $product){
+        $product->load('seasons');
+        return view('products.show', compact('product'));
+    }
 }
 
