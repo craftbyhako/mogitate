@@ -21,6 +21,10 @@ Route::get('/register', [ProductsController::class,'create']);
 
 Route::post('/products', [ProductsController::class, 'store']);
 
-Route::get('/products', [ProductsController::class, 'index']);
+Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
 
-Route::get('/products/{product}', [ProductsController::class, 'show']);
+Route::get('/products/{productId}', [ProductsController::class, 'show'])->name('products.show');
+
+// Route::get('/products/{productId}/update', [ProductsController::class, 'update'])->name('products.update_form');
+
+// Route::post('/products/{productId}/update', [ProductsController::class, 'update'])->name('products.update');

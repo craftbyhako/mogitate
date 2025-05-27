@@ -1,5 +1,29 @@
 @extends('layouts.app')
 
+<style>
+  th {
+    background-color: #289ADC;
+    color: white;
+    padding: 5px 40px;
+  }
+
+  tr:nth-child(odd) td {
+    background-color: #FFFFFF;
+  }
+
+  td {
+    padding: 25px 40px;
+    background-color: #EEEEEE;
+    text-align: center;
+  }
+
+  svg.w-5.h-5 {
+    /*paginateメソッドの矢印の大きさ調整のために追加*/
+    width: 30px;
+    height: 30px;
+  }
+</style>
+
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/products.css')}}">
 @endsection
@@ -12,35 +36,44 @@
     <!-- ＃＃＃サイドバー＃＃＃ -->
     <aside class="sidebar">
       <div>
-        <form method="GET" action="★★★"></form>
+        <form method="GET" action="{{ route('products.index') }}"></form>
 
         <!-- キーワード検索 -->
-            <input type="text" name="keyword" value="★★★★" placeholder="商品名で検索">
-            <a href="">
-                <button>検索</button>
-            </a>
+            <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="商品名で検索">
+            <button type="submit">検索</button>
       </div>
        <!-- 並び替え -->
       <div>
         <p>価格順で表示</p>
-        <select name="sort" onchange="this.form.submit() placeholder="価格で並べ変え"></select>
-        <option name="high" value="haigh"{{ request('sort') == 'high' ? 'selected' : '' }}>高い順に表示</option>
-        <option name="low" value="low" {{ request('sort') == 'low' ? 'selected' : '' }}>低い順に表示</option>
+        <select name="sort" onchange="this.form.submit() placeholder="価格で並べ変え">
+            <option name="high" value="high"{{ request('sort') == 'high' ? 'selected' : '' }}>高い順に表示</option>
+            <option name="low" value="low" {{ request('sort') == 'low' ? 'selected' : '' }}>低い順に表示</option>
+        </select>
+        </form>
     </aside>
 
     <!-- ＃＃＃メインコンテンツ＃＃＃ -->
-     <!-- キウイ -->
+    <div>
+    <button type=button onclick="location.href='/register'" >+ 商品を追加</button>
+    </div>
+
     <ul class="product-list">
-  <li class="product-card">
-    <img src="product1.jpg" alt="商品画像">
-    <h2>商品名</h2>
-    <p>価格: ¥3,000</p>
-  </li>
-  <li class="product-card">
-    <img src="product2.jpg" alt="商品画像">
-    <h2>商品名</h2>
-    <p>価格: ¥5,000</p>
-  </li>
+        @foreach ($products as $product)
+            <li class="product-card">
+                <a href="{{url('products/' . $product->id) }}">
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width:150px;">
 
+                <p>{{ $product->name }}</p>
+                <p>￥{{ $product->price }}</p>
+                <!-- <p>季節：
+                    @foreach($product->seasons as $season)
+                    {{ $season->season_name }}
+                    @endforeach
+                </p> -->
 
+                </a>
+            </li>
+        @endforeach
+    </ul>
+    {{ $products->links() }}
 @endsection

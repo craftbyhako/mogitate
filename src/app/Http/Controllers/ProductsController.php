@@ -35,7 +35,8 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $products = Product::with('seasons')->get();
+        $products = Product::with('seasons')->paginate(6);
+        
         return view('products', compact('products'));
     }
 
@@ -49,5 +50,7 @@ class ProductsController extends Controller
         $product->load('seasons');
         return view('products.show', compact('product'));
     }
+
+   
 }
 
