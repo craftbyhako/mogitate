@@ -1,0 +1,25 @@
+html,
+body {
+    height: 100%;
+}
+
+.app {
+    background-color: #E0DFDE;
+}
+
+/* ヘッダー */
+.header {
+    display: grid;
+    align-items: center;
+    padding: 16px 0;
+    height: 80px;
+    border: 1px solid #E0DFDE;
+    font-family: serif;
+    background-color: white;
+    
+}
+
+.header__heading {
+    color: rgb(215, 181, 70);
+}
+

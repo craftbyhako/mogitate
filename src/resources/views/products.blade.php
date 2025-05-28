@@ -31,7 +31,7 @@
 @section('content')
 <div class="products-index">
   <h2 class="products-index__heading ">商品一覧</h2>
-  <div class="contact-form__inner">
+  <div class="products-index__inner">
 
     <!-- ＃＃＃サイドバー＃＃＃ -->
     <aside class="sidebar">
@@ -53,27 +53,30 @@
     </aside>
 
     <!-- ＃＃＃メインコンテンツ＃＃＃ -->
-    <div>
-    <button type=button onclick="location.href='/register'" >+ 商品を追加</button>
-    </div>
+    <div class="index">
+      <div class="register-button__wrapper">
+        <button class="register-button" type=button onclick="location.href='/register'" >+ 商品を追加
+        </button>
+      </div>
+    
 
-    <ul class="product-list">
+      <ul class="product-list">
         @foreach ($products as $product)
             <li class="product-card">
-                <a href="{{ route('products.update-form', ['productId' => $product->id]) }}">
-                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width:150px;">
-
-                <p>{{ $product->name }}</p>
-                <p>￥{{ $product->price }}</p>
-                <!-- <p>季節：
-                    @foreach($product->seasons as $season)
-                    {{ $season->season_name }}
-                    @endforeach
-                </p> -->
-
-                </a>
-            </li>
+              <a href="{{ route('products.update-form', ['productId' => $product->id]) }}">
+                <div class="card-image">
+                 <img  src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" >
+                </div>
+                <div class="tag">
+                  <p>{{ $product->name }}</p>
+                  <p>￥{{ $product->price }}</p>
+                </div>
+              </a>
+            </li> 
         @endforeach
-    </ul>
-    {{ $products->links() }}
+      </ul>
+      <div class="pagination">
+      {{ $products->links() }}
+      </div>
+    </div>
 @endsection
