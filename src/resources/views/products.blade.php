@@ -60,7 +60,7 @@
     <ul class="product-list">
         @foreach ($products as $product)
             <li class="product-card">
-                <a href="{{ route('products.update-form', $product->id) }}">
+                <a href="{{ route('products.update-form', ['productId' => $product->id]) }}">
                 <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width:150px;">
 
                 <p>{{ $product->name }}</p>

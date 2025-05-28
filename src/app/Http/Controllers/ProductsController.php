@@ -53,18 +53,20 @@ class ProductsController extends Controller
     // show機能
     public function show(Product $product){
         $product->load('seasons');
-        return view('products.show', compact('product'));
+        $seasons = Season::all();
+        return view('update', compact('product', 'seasons'));
     }
 
     // edit機能
    public function edit(Product $product){
 
     $product->load('seasons');
-    return view('products.update-form', compact('product'));
+    $seasons = \App\Models\Season::all();
+    return view('update', compact('product', 'seasons'));
    }
 
     // update機能
-   public function update(UpdateRequest $request,Product $product)
+   public function update(UpdateRequest $request, Product $product)
    {
     $product->update($request->validate());
 
