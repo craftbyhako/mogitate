@@ -36,20 +36,23 @@
     <!-- ＃＃＃サイドバー＃＃＃ -->
     <aside class="sidebar">
       <div>
-        <form method="GET" action="{{ route('products.index') }}"></form>
+        <form method="GET" action="{{ route('products.index') }}">
+          @csrf
 
         <!-- キーワード検索 -->
-            <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="商品名で検索">
+            <input class="search-item" type="text" name="keyword" value="{{ request('keyword') }}" placeholder="商品名で検索">
             <button type="submit">検索</button>
-      </div>
+
        <!-- 並び替え -->
-      <div>
-        <p>価格順で表示</p>
-        <select name="sort" onchange="this.form.submit() placeholder="価格で並べ変え">
+          <div>
+          <p>価格順で表示</p>
+          <select class="sort__select" name="sort" onchange="this.form.submit() placeholder="価格で並べ変え">
             <option name="high" value="high"{{ request('sort') == 'high' ? 'selected' : '' }}>高い順に表示</option>
             <option name="low" value="low" {{ request('sort') == 'low' ? 'selected' : '' }}>低い順に表示</option>
-        </select>
+          </select>
+          </div>
         </form>
+      </div>
     </aside>
 
     <!-- ＃＃＃メインコンテンツ＃＃＃ -->

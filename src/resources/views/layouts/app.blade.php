@@ -13,7 +13,7 @@
 <body>
   <div class="app">
     <header class="header">
-      <h1 class="header__heading">mogitate</h1>
+      <h1 class="header__heading"><a href="/products">mogitate</a></h1>
       @yield('link')
    
    

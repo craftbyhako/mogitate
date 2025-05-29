@@ -36,11 +36,29 @@ class ProductsController extends Controller
     }
 
     // index機能
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('seasons')->paginate(6);
-        
-        return view('products', compact('products'));
+        $keyword = $request->input('keyword');
+        $sort = $request->input('sort');
+
+        $query = Product::query();
+
+        // キーワード検査
+        if(!empty($keyword)) {
+            $query->where('name', 'LIKE', "%{$keyword}%");
+        }
+
+        // 並び替え
+        if ($sort === 'high') {
+            $query->orderBy('price', 'desc');
+        } elseif ($sort === 'low') {
+            $query->orderBy('price', 'asc');
+        }
+
+
+        $products = $query->paginate(6)->appends($request->query());
+               
+        return view('products', compact('products', 'keyword', 'sort'));
     }
 
     // create機能

@@ -1,0 +1,37 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    margin-bottom: 1em;
+    color: #555; }
+
+.form__error {
+    color: red;
+}
+
+.card-info {
+    display: flex;
+    
+}
+
+.card-info__img--group{
+    width: 250px;
+    margin: 0 auto;
+}
+
+.card-info__content{
+    flex:1;
+}
+
+.card-info__img {
+
+}
+
+.card-info__tag {
+    font-weight: bold;
+}
+
