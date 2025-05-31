@@ -49,24 +49,6 @@
     @enderror
     </div>
 
-    <!-- 春
-    <input type="radio" name="season" id="spring" value="1" {{ old('season')==1 || old('season')==null ? 'checked' : '' }}>
-        <span>春</span>
-    夏
-    <input type="radio" name="season" id="summer" value="2" {{ old('season')==2 || old('season')==null ? 'checked' : '' }}>
-    <span>夏</span>
-    秋
-    <input type="radio" name="season" id="autumn" value="3" {{ old('season')==3 || old('season')==null ? 'checked' : '' }}>
-    <span>秋</span>
-    <! 冬
-    <input type="radio" name="season" id="winter" value="4" {{ old('season')==4 || old('season')==null ? 'checked' : '' }}>
-    <span>冬</span>
-    <div class="form__error">
-    @error('season')
-        {{ $message}}
-    @enderror
-    </div> -->
-
     <h3>商品説明<span>必須</span></h3>
     <textarea name="description" cols="40" rows="5" id="" placeholder="商品の説明を入力">{{ old('description') }}</textarea>
     <div class="form__error">
