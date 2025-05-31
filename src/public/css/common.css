@@ -10,9 +10,7 @@ body {
 /* ヘッダー */
 .header {
     display: grid;
-    align-items: center;
-    padding: 50px;
-    /* 10px 0; */
+    padding: 10px 0; 
     height: 80px;
     border: 1px solid #E0DFDE;
     font-family: serif;
@@ -32,6 +30,7 @@ body {
     font-size: 30px;
     line-height: 33px;
     color: #F5C800;
+    align-items: center;
     
 
 }

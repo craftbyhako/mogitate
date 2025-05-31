@@ -59,7 +59,7 @@
                 </div>
         </div>
         <h3>商品説明</h3>
-            <textarea name="description" cols="40" rows="5" id="" >{{ $product->description }}</textarea>
+            <textarea class="description" name="description" cols="40" rows="5" id="" >{{ $product->description }}</textarea>
             <div class="form__error">
                 @error('description')
                     {{ $message}}

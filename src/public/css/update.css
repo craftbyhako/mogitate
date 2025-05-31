@@ -14,24 +14,30 @@
 }
 
 .card-info {
-    display: flex;
-    
+    display: flex;    
 }
 
 .card-info__img--group{
     width: 250px;
-    margin: 0 auto;
+    
 }
 
 .card-info__content{
-    flex:1;
-}
-
-.card-info__img {
+    display: flex;
+    gap: 4px;
 
 }
+
+.description {
+    margin-top: 12px;
+ }
+
+/* .card-info__img {
+
+} */
 
 .card-info__tag {
     font-weight: bold;
 }
+
 
