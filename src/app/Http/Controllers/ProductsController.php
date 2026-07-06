@@ -86,7 +86,7 @@ class ProductsController extends Controller
     // update機能
    public function update(UpdateRequest $request, Product $product)
    {
-    $product->update($request->validate());
+    $product->update($request->validated());
 
     return redirect()->route('products.show', $product->id);
    }

@@ -1,2 +1,121 @@
+html,
+body {
+    background: #F5F5F5;
+    height: 100%;
+    margin: 0;
+}
 
+.register {
+    width: 850px;
+    margin: 0 auto;
+}
 
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-title {
+    margin-bottom: 40px;
+}
+
+.form__label {
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555555;
+}
+
+.form__text {
+    width: 100%;
+    height: 45px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+}
+
+.form__textarea {
+    width: 100%;
+    height: 180px;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+}
+
+.form__file {
+    border: none;
+    background-color: transparent;
+}
+
+.season-list {
+    display: flex;
+    gap: 30px;   /* 好きな間隔に調整 */
+}
+
+.season-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;    /* チェックボックスと文字の間 */
+}
+
+.form__textarea {
+    height: 150px;
+}
+
+.form__file {
+    margin-top: 5px;
+}
+
+::placeholder {
+    color: grey;
+}
+
+.require {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 8px;
+    color: #fff;
+    background: red;
+    font-size: 12px;
+}
+
+.note {
+    color: red;
+    font-size: 13px;
+    margin-left: 10px;
+}
+
+.form__error {
+    color: red;
+    margin-top: 5px;
+}
+
+.button-content {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.back {
+    display: inline-block;
+    width: 200px;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    background: #d6d6d6;
+    border-radius: 5px;
+}
+
+.button-register {
+    width: 200px;
+    height: 40px;
+    border: none;
+    background: gold;
+    border-radius: 5px;
+    cursor: pointer;
+}
