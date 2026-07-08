@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Season;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UpdateRequest;
+use Illuminate\Support\Facades\DB;
 
 
 class ProductsController extends Controller
@@ -28,9 +29,15 @@ class ProductsController extends Controller
         'description' => $request->description,
     ]);
 
-    if ($request->has('seasons')) {
-        $product->seasons()->attach($request->seasons);
-    }
+    
+    // if ($request->has('seasons')) {
+    //     $product->seasons()->attach($request->seasons);
+    // }
+
+    $product->seasons()->attach($request->seasons);
+
+    dd(DB::table('product_season')->get());
+
 
     return redirect('/products');
     }
@@ -86,9 +93,18 @@ class ProductsController extends Controller
     // update機能
    public function update(UpdateRequest $request, Product $product)
    {
-    $product->update($request->validated());
+        $data = $request->validated();
 
-    return redirect()->route('products.show', $product->id);
+        if($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('images', 'public');
+        } else {        
+            $data['image'] = $product->image;
+        }
+   
+        $product->update($data);
+        $product->seasons()->sync($request->seasons);
+
+        return redirect()->route('products.show', $product->id);
    }
 
 
